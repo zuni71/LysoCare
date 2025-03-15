@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{% extends 'libra/base.html' %}
+
+{% block content %}
+<html>
+<body>
+  <section>
+    <h1> Member Details </h1>
+    <p>Name: {{ member.name }}</p>
+    <p>Branch: {{ member.branch }}</p>
+  
+  {% if loans %}
+  <ul>
+  {% for loan in loans %}
+  <li><a href="{% url 'books_detail' loan.book.id %}">{{ loan.book }}</a></li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No loans yet for this member.</p>
+{% endif %}
+</section>
+
+</body>
+</html>
+{% endblock %}

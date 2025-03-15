@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{% extends 'libra/base.html' %}
+
+{% block content %}
+<html>
+<body>
+  <section>
+    <h1> All Loans </h1>
+  {% if all_loans_list %}
+  <ul>
+  {% for loan in all_loans_list %}
+  <li><a href="{% url 'loans_detail' loan.id %}">{{ loan }}</a></li>
+  {% endfor %}
+  </ul>
+  {% else %}
+  <p>No loans.</p>
+  {% endif %}
+  </section>
+</body>
+</html>
+{% endblock %}

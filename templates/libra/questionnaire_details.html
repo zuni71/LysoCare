@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{% extends 'libra/base.html' %}
+
+{% block content %}
+
+<html>
+<body>
+  <section>
+    <h1> Results </h1>
+    
+    {{ d.as_p }}
+
+  
+  
+    {% if answers %}
+        <div class="results-container">
+            {% for answer in answers %}
+                <div class="question-answer">
+                    <h3>{{ answer.question }}</h3>
+                    <p>Your answer: <strong>{{ answer.choice }}</strong></p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No data exist.</p>
+    {% endif %}
+
+    <div>
+      <canvas id="surveyChart" width="400" height="300"></canvas>
+    </div>
+
+    <div class="chart-container">
+      {{ plot_div|safe }}
+    </div>
+  
+  </section>
+</body>
+</html>
+{% endblock %}

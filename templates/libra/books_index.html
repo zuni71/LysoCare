@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{% extends 'libra/base.html' %}
+
+{% block content %}
+<html>
+<body>
+  <section>
+    <h1> Books </h1>
+  {% if all_books_list %}
+  <ul>
+  {% for book in all_books_list %}
+  <li><a href="{% url 'books_detail' book.id %}">{{ book.title }}</a></li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No books are available.</p>
+{% endif %}
+</section>
+
+</body>
+</html>
+{% endblock %}
